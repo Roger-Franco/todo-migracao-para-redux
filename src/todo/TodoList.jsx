@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import IconButton from '../template/IconButton'
 
 const TodoList = props => {
@@ -10,10 +11,10 @@ const TodoList = props => {
                 <td>
                     <IconButton btnStyle='success' icon='check' hide={todo.done} onClick={() => props.handleMarkAsDone(todo)} />
                     <IconButton btnStyle='warning' icon='undo' hide={!todo.done} onClick={() => props.handleMarkAsPending(todo)} />
-                    <IconButton btnStyle='danger' icon='trash-o' hide={!todo.done} onClick={() => props.handleRemove(todo)}/>
+                    <IconButton btnStyle='danger' icon='trash-o' hide={!todo.done} onClick={() => props.handleRemove(todo)} />
                 </td>
             </tr>
-        )) 
+        ))
     }
     return (
         <table className='table'>
@@ -30,4 +31,5 @@ const TodoList = props => {
     )
 }
 
-export default TodoList
+const mapStateToProps = state => ({ list: state.todo.list })
+export default connect(mapStateToProps)(TodoList)
