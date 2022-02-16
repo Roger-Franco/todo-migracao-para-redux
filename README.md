@@ -1,0 +1,1 @@
+# todo-migracao-para-redux
